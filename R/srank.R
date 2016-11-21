@@ -24,7 +24,7 @@ srank <- function(outcome, strata, weights = NULL,
 
     # ranking strata
     tmp_fun <- function(x) c(share = sum(x$weights)/sum(input$weights),
-        s_prank = weighted.mean(x$prank, x$weights))
+        s_prank = stats::weighted.mean(x$prank, x$weights))
     out <- t(vapply(split(input, input$strata),
         tmp_fun, numeric(2)))
 

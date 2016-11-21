@@ -1,7 +1,5 @@
 #' @useDynLib strat
 #' @importFrom Rcpp evalCpp
-#' @importFrom stats approx weighted.mean
-#'
 NULL
 
 wtd_rank <- function (x, weights = NULL, normwt = FALSE, na.rm = TRUE){
@@ -10,7 +8,7 @@ wtd_rank <- function (x, weights = NULL, normwt = FALSE, na.rm = TRUE){
   tab <- Hmisc::wtd.table(x, weights, normwt = normwt, na.rm = na.rm)
   freqs <- tab$sum.of.weights
   r <- cumsum(freqs) - 0.5 * (freqs - 1)
-  approx(tab$x, r, xout = x, rule = 2)$y
+  stats::approx(tab$x, r, xout = x, rule = 2)$y
 }
 
 clean <- function(outcome, strata, weights = NULL, group = NULL){
@@ -36,6 +34,7 @@ clean <- function(outcome, strata, weights = NULL, group = NULL){
     # return a data frame
     ok <- stats::complete.cases(outcome, strata, weights)
     n <- sum(ok)
+    if (n==0) stop("no complete cases!")
     outcome <- outcome[ok]
     strata <- factor(strata[ok])
     weights <- weights[ok]/sum(weights[ok]) * n

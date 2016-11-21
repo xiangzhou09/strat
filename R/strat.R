@@ -9,7 +9,7 @@
 #'   membership. The elements are coerced to factors by
 #'   \code{\link[base]{factor}}.
 #' @param weights An optional vector of weights.
-#' @param ordered Logical. If \code{TRUE} strata are pre-ordered.
+#' @param ordered Logical. If \code{TRUE} strata are pre-ordered ascendingly.
 #' @param group An optional grouping factor. If specified, \code{strat} also
 #'   returns between-group and within-group components of the overall
 #'   stratification.
@@ -30,8 +30,11 @@
 strat <- function(outcome, strata, weights = NULL,
     ordered = FALSE, group = NULL) {
 
-    if (length(ordered) != 1)
-        stop("ordered has to be a logical scalar")
+    if (!is.logical(ordered) || is.na(ordered))
+      stop("ordered has to be a valid logical scalar")
+
+    if (anyNA(group))
+      stop("group contains missing values")
 
     group_name <- deparse(substitute(group))
 
@@ -50,8 +53,7 @@ strat <- function(outcome, strata, weights = NULL,
         decomp <- NULL
         within <- NULL
     } else {
-        group_num <- as.numeric(input_df$group) -
-            1
+        group_num <- as.numeric(input_df$group) - 1
         s <- strat_cpp_by(input_df$prank, input_df$sort_by,
             input_df$weights, group_num)
         decomp <- matrix(c(s$weight_w, s$weight_b,

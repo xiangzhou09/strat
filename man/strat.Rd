@@ -15,7 +15,7 @@ membership. The elements are coerced to factors by
 
 \item{weights}{An optional vector of weights.}
 
-\item{ordered}{Logical. If \code{TRUE} strata are pre-ordered.}
+\item{ordered}{Logical. If \code{TRUE} strata are pre-ordered ascendingly.}
 
 \item{group}{An optional grouping factor. If specified, \code{strat} also
 returns between-group and within-group components of the overall
