@@ -1,5 +1,7 @@
 #' @useDynLib strat
 #' @importFrom Rcpp evalCpp
+#' @importFrom stats approx weighted.mean
+#'
 NULL
 
 wtd_rank <- function (x, weights = NULL, normwt = FALSE, na.rm = TRUE){

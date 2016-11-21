@@ -1,6 +1,8 @@
 
 #' Print an object of class \code{srank}
 #' @param x An object of class \code{srank}
+#' @param digits the number of significant digits to use when printing
+#' @param ... further arguments passed to or from other methods
 #' @export
 print.srank <- function(x, digits = 3, ...) {
 
@@ -14,6 +16,8 @@ print.srank <- function(x, digits = 3, ...) {
 
 #' Print an object of class \code{strat}
 #' @param x An object of class \code{strat}
+#' @param digits the number of significant digits to use when printing
+#' @param ... further arguments passed to or from other methods
 #' @export
 print.strat <- function(x, digits = 3, ...) {
 
