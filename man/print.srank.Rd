@@ -8,6 +8,10 @@
 }
 \arguments{
 \item{x}{An object of class \code{srank}}
+
+\item{digits}{the number of significant digits to use when printing}
+
+\item{...}{further arguments passed to or from other methods}
 }
 \description{
 Print an object of class \code{srank}
