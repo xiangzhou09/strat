@@ -1,0 +1,38 @@
+#' Ranking strata.
+#'
+#' Ranking strata according to the average percentile rank of members in each
+#' stratum.
+#'
+#' @inheritParams strat
+#' @param group An optional grouping factor.
+#' @return An object of class \code{srank}. \item{raw}{a data frame
+#'   consisting of complete cases of all inputs.} \item{summary}{a data frame
+#'   of stratum-specific information, including name, population
+#'   share, and average percentile rank.}
+#' @export
+#' @examples
+#' strata <- floor(runif(1000, 1, 5))
+#' outcome <- rnorm(1000, 1+0.5*strata, 1)
+#' random_letters <- letters[floor(runif(1000, 1, 5))]
+#' info <- srank(outcome, strata, group = random_letters)
+#' print(info, digits = 3)
+srank <- function(outcome, strata, weights = NULL,
+    group = NULL) {
+
+    # data input
+    input <- clean(outcome, strata, weights = weights, group = group)
+
+    # ranking strata
+    tmp_fun <- function(x) c(share = sum(x$weights)/sum(input$weights),
+        s_prank = weighted.mean(x$prank, x$weights))
+    out <- t(vapply(split(input, input$strata),
+        tmp_fun, numeric(2)))
+
+    # output
+    strata_info <- data.frame(strata = rownames(out), out)
+    rownames(strata_info) <- NULL
+
+    out <- list(raw = input, summary = strata_info)
+    class(out) <- c("srank", "list")
+    out
+}
