@@ -1,7 +1,5 @@
 #' @useDynLib strat
 #' @importFrom Rcpp evalCpp
-#' @importFrom Hmisc wtd.table
-#' @importFrom stats approx complete.cases
 NULL
 
 
