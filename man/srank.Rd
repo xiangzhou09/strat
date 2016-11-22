@@ -28,10 +28,8 @@ Ranking strata according to the average percentile rank of members in each
 stratum.
 }
 \examples{
-strata <- floor(runif(1000, 1, 5))
-outcome <- rnorm(1000, 1+0.5*strata, 1)
-random_letters <- letters[floor(runif(1000, 1, 5))]
-info <- srank(outcome, strata, group = random_letters)
-print(info, digits = 3)
+strata_info <- with(cpsmarch2015, srank(income, big_class,
+ weights = weight, group = education))
+print(strata_info, digits = 3)
 }
 
