@@ -21,6 +21,8 @@
 #'   overall stratification.}\item{within_group}{within-group indices of
 #'   stratification by group.}
 #' @export
+#' @references Zhou, Xiang. 2012. "A Nonparametric Index of Stratification."
+#'   Sociological Methodology, 42(1): 365-389.
 #' @examples
 #' s <- with(cpsmarch2015, strat(income, big_class,
 #'  weights = weight, group = education))

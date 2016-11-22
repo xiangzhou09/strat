@@ -42,4 +42,8 @@ print(s, digits = 4)
 print(s$strata_info, digits = 4)
 print(s$within_group, digits = 4)
 }
+\references{
+Zhou, Xiang. 2012. "A Nonparametric Index of Stratification."
+  Sociological Methodology, 42(1): 365-389.
+}
 

@@ -11,11 +11,10 @@ Description: An implementation of the stratification index proposed by Zhou (201
   When a grouping factor is specified, strat also provides a detailed decomposition
   of the overall stratification into between-group and within-group components.
 Depends:
-    R (>= 3.3.1)
+    R (>= 3.3.1), Hmisc (>= 4.0-0)
 Imports:
-    Hmisc (>= 4.0-0),
     Rcpp,
-    stats,
+    stats
 LinkingTo:
     Rcpp,
     RcppArmadillo
