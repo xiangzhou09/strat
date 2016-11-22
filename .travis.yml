@@ -4,4 +4,4 @@ language: R
 sudo: required
 cache: packages
 
-r_github_packages: therneau/survival
+r_packages: survival
